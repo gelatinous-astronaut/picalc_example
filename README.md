@@ -15,4 +15,4 @@ where <N> is the number of processors you wish to use.
 
 Plot:
 
-![image of a plot](https://github.com/gelatinous-astronaut/picalc-example/tree/main/Figure_1.png?raw=true)
+![image of a plot](https://github.com/gelatinous-astronaut/picalc_example/blob/main/Figure_1.png?raw=true)
