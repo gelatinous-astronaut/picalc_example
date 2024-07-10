@@ -11,7 +11,7 @@ For multiprocessing version:
 For mpi4py version:
 ```mpirun -n <N> python3 picalc_mpi4.py```
 
-where <N> is the number of processors you wish to use.
+where N is the number of processors you wish to use.
 
 Plot:
 
