@@ -3,6 +3,14 @@
 import numpy as np
 import time, os
 
+total_n_points = input("enter number of points [10,000]: ")
+try:
+    total_n_points = int(total_n_points)
+except:
+    total_n_points = 10000
+
+print('performing calculation with '+str(total_n_points)+' points')
+
 def monte_carlo_simulation(n_points):
 	circle_count = 0	
 	
@@ -19,8 +27,6 @@ if __name__ == "__main__":
 	print('*'*35)
 	print('running serial version of picalc')
 	print('*'*35)
-
-	total_n_points = int(os.environ.get('TOTAL_NUM_POINTS'))
 
 	starttime = time.time()
 	final_circle_count = monte_carlo_simulation(total_n_points)

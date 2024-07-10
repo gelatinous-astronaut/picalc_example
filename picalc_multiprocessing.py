@@ -4,6 +4,13 @@ import multiprocessing
 import numpy as np
 import time, os
 
+total_n_points = input("enter number of points [10,000]: ")
+try:
+    total_n_points = int(total_n_points)
+except:
+    total_n_points = 10000
+print('performing calculation with '+str(total_n_points)+' points')
+
 def monte_carlo_simulation(num):
     circle_count = 0
 
@@ -16,16 +23,15 @@ def monte_carlo_simulation(num):
     return circle_count
 
 def master_worker_pi_calculation(num_points, num_tasks):
-    from multiprocessing.pool import Pool
-    pool = Pool()
+    pool = multiprocessing.Pool(processes=num_tasks)
     
     batch_size = num_points // num_tasks
 
-    pool = multiprocessing.Pool()
-    results = []
-    for _ in range(num_tasks):
-        task_count = pool.apply(monte_carlo_simulation,args=(batch_size,))
-        results.append(task_count)
+    results = pool.map(monte_carlo_simulation, [batch_size] * num_tasks)
+    # results = []
+    # for _ in range(num_tasks):
+    #     task_count = pool.apply(monte_carlo_simulation,args=(batch_size,))
+    #     results.append(task_count)
 
     pool.close()
     pool.join()
@@ -38,8 +44,7 @@ if __name__ == "__main__":
     print('running multiprocessing version of picalc')
     print('*'*35)
 
-    num_tasks = int(os.environ.get('SLURM_NTASKS'))
-    total_n_points = int(os.environ.get('TOTAL_NUM_POINTS'))
+    num_tasks = int(os.environ.get('SLURM_NTASKS', multiprocessing.cpu_count()))
     
     print('\nworking on',num_tasks,'processors\n')
 

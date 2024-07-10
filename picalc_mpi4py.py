@@ -4,6 +4,14 @@ from mpi4py import MPI
 import numpy as np
 import time, os
 
+total_n_points = 1000000#input("enter number of points [10,000]: ")
+#try:
+#    total_n_points = int(total_n_points)
+#except:
+#    total_n_points = 10000
+
+print('performing calculation with '+str(total_n_points)+' points')
+
 def monte_carlo_simulation(num):
     circle_count = 0
 
@@ -46,7 +54,6 @@ if __name__ == "__main__":
 
     if rank == 0:
         num_tasks = int(os.environ.get('SLURM_NTASKS'))
-        total_n_points = int(os.environ.get('TOTAL_NUM_POINTS'))
         print('\nworking on', num_tasks, 'processors\n')
 
         starttime = time.time()
