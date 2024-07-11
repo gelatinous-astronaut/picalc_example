@@ -7,20 +7,11 @@ from monte_carlo import monte_carlo_simulation
 
 def master_worker_pi_calculation(num_points, num_tasks):
     pool = multiprocessing.Pool(processes=num_tasks)
-    
     batch_size = num_points // num_tasks
-
     results = pool.map(monte_carlo_simulation, [batch_size] * num_tasks)
-    # results = []
-    # for _ in range(num_tasks):
-    #     task_count = pool.apply(monte_carlo_simulation,args=(batch_size,))
-    #     results.append(task_count)
-
     pool.close()
     pool.join()
-
     return sum(results)
-
 
 if __name__ == "__main__":
     print('*'*35)

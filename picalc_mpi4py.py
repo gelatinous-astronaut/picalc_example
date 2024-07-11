@@ -5,17 +5,6 @@ import numpy as np
 import time, os
 from monte_carlo import monte_carlo_simulation
 
-# def monte_carlo_simulation(num):
-#     circle_count = 0
-
-#     for i in np.arange(num):
-#         new_point = np.array([2. * (np.random.random() - 0.5), 2 * (np.random.random() - 0.5)])
-
-#         if np.linalg.norm(new_point) < 1:
-#             circle_count += 1
-
-#     return circle_count
-
 def master_worker_pi_calculation(num_points, num_tasks):
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
