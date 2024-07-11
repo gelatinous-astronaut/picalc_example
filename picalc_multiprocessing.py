@@ -3,24 +3,7 @@
 import multiprocessing
 import numpy as np
 import time, os
-
-total_n_points = input("enter number of points [10,000]: ")
-try:
-    total_n_points = int(total_n_points)
-except:
-    total_n_points = 10000
-print('performing calculation with '+str(total_n_points)+' points')
-
-def monte_carlo_simulation(num):
-    circle_count = 0
-
-    for i in np.arange(num):
-        new_point = np.array([2.*(np.random.random()-0.5),2*(np.random.random()-0.5)])
-
-        if np.linalg.norm(new_point) < 1:
-            circle_count += 1
-
-    return circle_count
+from monte_carlo import monte_carlo_simulation
 
 def master_worker_pi_calculation(num_points, num_tasks):
     pool = multiprocessing.Pool(processes=num_tasks)
@@ -43,6 +26,9 @@ if __name__ == "__main__":
     print('*'*35)
     print('running multiprocessing version of picalc')
     print('*'*35)
+
+    total_n_points = 100000 
+    print('performing calculation with '+str(total_n_points)+' points')
 
     num_tasks = int(os.environ.get('SLURM_NTASKS', multiprocessing.cpu_count()))
     

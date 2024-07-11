@@ -3,25 +3,18 @@
 from mpi4py import MPI
 import numpy as np
 import time, os
+from monte_carlo import monte_carlo_simulation
 
-total_n_points = 1000000#input("enter number of points [10,000]: ")
-#try:
-#    total_n_points = int(total_n_points)
-#except:
-#    total_n_points = 10000
+# def monte_carlo_simulation(num):
+#     circle_count = 0
 
-print('performing calculation with '+str(total_n_points)+' points')
+#     for i in np.arange(num):
+#         new_point = np.array([2. * (np.random.random() - 0.5), 2 * (np.random.random() - 0.5)])
 
-def monte_carlo_simulation(num):
-    circle_count = 0
+#         if np.linalg.norm(new_point) < 1:
+#             circle_count += 1
 
-    for i in np.arange(num):
-        new_point = np.array([2. * (np.random.random() - 0.5), 2 * (np.random.random() - 0.5)])
-
-        if np.linalg.norm(new_point) < 1:
-            circle_count += 1
-
-    return circle_count
+#     return circle_count
 
 def master_worker_pi_calculation(num_points, num_tasks):
     comm = MPI.COMM_WORLD
@@ -48,6 +41,9 @@ if __name__ == "__main__":
     print('*'*35)
     print('running mpi4py version of picalc')
     print('*'*35)
+
+    total_n_points = 100000 
+    print('performing calculation with '+str(total_n_points)+' points')
 
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
