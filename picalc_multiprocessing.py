@@ -24,7 +24,7 @@ if __name__ == "__main__":
     total_n_points = 100000 
     print('performing calculation with '+str(total_n_points)+' points')
 
-    num_tasks = int(os.environ.get('SLURM_NTASKS', multiprocessing.cpu_count()))
+    num_tasks = int(os.environ.get('SLURM_CPUS_ON_NODE', multiprocessing.cpu_count()))
     
     print('\nworking on',num_tasks,'processors\n')
 
