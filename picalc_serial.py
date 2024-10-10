@@ -2,7 +2,9 @@
 
 import numpy as np
 import time, os
-from monte_carlo import monte_carlo_simulation
+
+#load the simulation the monte_carlo.py file included in this repo
+from monte_carlo import monte_carlo_simulation 
 
 if __name__ == "__main__":
 	
@@ -10,6 +12,7 @@ if __name__ == "__main__":
 	print('running serial version of picalc')
 	print('*'*35)
 
+	# make sure this is the same across different examples if you wish to compare performance
 	total_n_points = 100000
 	print('performing calculation with '+str(total_n_points)+' points')
 
