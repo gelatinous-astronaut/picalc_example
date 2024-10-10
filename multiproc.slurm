@@ -19,4 +19,4 @@ module load python/3.11
 source ~/pip/picalc/bin/activate
 
 cd ~/picalc_example
-python3 picalc_multiprocessing.py
+mpirun -n $SLURM_NTASKS python3 picalc_multiprocessing.py
