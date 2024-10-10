@@ -21,10 +21,10 @@ if __name__ == "__main__":
     print('*'*35)
 
     # make sure this is the same across different examples if you wish to compare performance
-    total_n_points = 100000 
+    total_n_points = 1.e6 # 10^6
     print('performing calculation with '+str(total_n_points)+' points')
 
-    num_tasks = int(os.environ.get('SLURM_CPUS_ON_NODE', multiprocessing.cpu_count()))
+    num_tasks = int(os.environ.get('SLURM_CPUS_PER_TASK', multiprocessing.cpu_count()))
     
     print('\nworking on',num_tasks,'processors\n')
 

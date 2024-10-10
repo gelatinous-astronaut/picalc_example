@@ -34,7 +34,7 @@ if __name__ == "__main__":
     print('*'*35)
 
     # make sure this is the same across different examples if you wish to compare performance
-    total_n_points = 100000 
+    total_n_points = 1.e6 # 10^6
     print('performing calculation with '+str(total_n_points)+' points')
 
     comm = MPI.COMM_WORLD
@@ -56,6 +56,6 @@ if __name__ == "__main__":
         print('number of points in circle: ', total_circle_count)
         print('estimate of pi: ', pi_est)
         print('percent difference: ', np.round(percent_diff, 2), '%')
-    else:
-        master_worker_pi_calculation(None, None)
+    # else:
+    #     master_worker_pi_calculation(None, None)
 

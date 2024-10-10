@@ -16,8 +16,7 @@
 ### Code Section
 # --------------------
 module load python/3.11
-module load openmpi3
 source ~/pip/picalc/bin/activate
 
 cd ~/picalc_example
-mpirun -n $SLURM_CPUS_ON_NODE python3 picalc_multiprocessing.py
+python3 picalc_multiprocessing.py

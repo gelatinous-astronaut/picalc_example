@@ -13,7 +13,7 @@ if __name__ == "__main__":
 	print('*'*35)
 
 	# make sure this is the same across different examples if you wish to compare performance
-	total_n_points = 100000
+	total_n_points = 1.e6 # 10^6
 	print('performing calculation with '+str(total_n_points)+' points')
 
 	starttime = time.time()
