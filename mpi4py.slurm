@@ -16,6 +16,7 @@
 ### Code Section
 # --------------------
 module load python/3.11
+module load openmpi3
 source ~/pip/picalc/bin/activate
 
 cd ~/picalc_example
